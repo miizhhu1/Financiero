@@ -5,12 +5,12 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 
-	// constructor
-	
+	// constructores
+	//constructor vacio
 	public Cliente(){ 
 		
 	}
-	
+	//constructor con parametros
 	public Cliente(String cedula, String nombre, String apellido) {
 		this.cedula = cedula;
 		this.nombre = nombre;
