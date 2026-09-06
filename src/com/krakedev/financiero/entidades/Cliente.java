@@ -6,6 +6,11 @@ public class Cliente {
 	private String apellido;
 
 	// constructor
+	
+	public Cliente(){ 
+		
+	}
+	
 	public Cliente(String cedula, String nombre, String apellido) {
 		this.cedula = cedula;
 		this.nombre = nombre;
