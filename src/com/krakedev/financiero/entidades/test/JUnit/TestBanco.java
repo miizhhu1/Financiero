@@ -89,60 +89,78 @@ public class TestBanco {
 		assertEquals(false, resultado);
 		assertEquals(0, cuenta.getSaldoActual());
 	}
-	
-	//deposito con valor negativo
+
+	// deposito con valor negativo
 	@Test
 	public void probarDepositoMontoNegativo() {
 
-	    Banco banco = new Banco();
-	    Cuenta cuenta = new Cuenta("1000");
+		Banco banco = new Banco();
+		Cuenta cuenta = new Cuenta("1000");
 
-	    boolean resultado = banco.depositar(-50, cuenta);
+		boolean resultado = banco.depositar(-50, cuenta);
 
-	    assertEquals(false, resultado);
-	    assertEquals(0, cuenta.getSaldoActual());
+		assertEquals(false, resultado);
+		assertEquals(0, cuenta.getSaldoActual());
 	}
-	
-	//probar retiro valido
+
+	// probar retiro valido
 	@Test
 	public void probarRetiroValido() {
 
-	    Banco banco = new Banco();
-	    Cuenta cuenta = new Cuenta("1000");
+		Banco banco = new Banco();
+		Cuenta cuenta = new Cuenta("1000");
 
-	    cuenta.setSaldoActual(100);
+		cuenta.setSaldoActual(100);
 
-	    boolean resultado = banco.retirar(40, cuenta);
+		boolean resultado = banco.retirar(40, cuenta);
 
-	    assertEquals(true, resultado);
-	    assertEquals(60, cuenta.getSaldoActual());
+		assertEquals(true, resultado);
+		assertEquals(60, cuenta.getSaldoActual());
 	}
-	
-	//probar retiro monto 0
+
+	// probar retiro monto 0
 	@Test
 	public void probarReritoCero() {
-		Banco banco=new Banco();
+		Banco banco = new Banco();
 		Cuenta cuenta = new Cuenta("25");
 		cuenta.setSaldoActual(500);
 		boolean resultado = banco.retirar(0, cuenta);
 		assertEquals(false, resultado);
-	    assertEquals(500, cuenta.getSaldoActual());
+		assertEquals(500, cuenta.getSaldoActual());
 	}
-	
-	//retiro es mayor al saldo de la cuenta
+
+	// retiro es mayor al saldo de la cuenta
 	@Test
 	public void probarRetiroMayorAlSaldo() {
 
-	    Banco banco = new Banco();
-	    Cuenta cuenta = new Cuenta("1000");
+		Banco banco = new Banco();
+		Cuenta cuenta = new Cuenta("1000");
 
-	    cuenta.setSaldoActual(50);
+		cuenta.setSaldoActual(50);
 
-	    boolean resultado = banco.retirar(150, cuenta);
+		boolean resultado = banco.retirar(150, cuenta);
 
-	    assertEquals(false, resultado);
-	    assertEquals(50, cuenta.getSaldoActual());
+		assertEquals(false, resultado);
+		assertEquals(50, cuenta.getSaldoActual());
 	}
 	
+	// probar transferencia
+	@Test
+	public void probarTransferencia() {
+
+	    Banco banco = new Banco();
+
+	    Cuenta origen = new Cuenta("1000");
+	    Cuenta destino = new Cuenta("1001");
+
+	    origen.setSaldoActual(500);
+	    destino.setSaldoActual(100);
+
+	    boolean resultado = banco.transferir(origen, destino);
+
+	    assertEquals(true, resultado);
+	    assertEquals(0, origen.getSaldoActual(),0.001);
+	    assertEquals(600, destino.getSaldoActual(),0.001);
+	}
 	
 }

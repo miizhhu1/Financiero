@@ -19,40 +19,50 @@ public class Banco {
 	public void setUltimoCodigo(int ultimoCodigo) {
 		this.ultimoCodigo = ultimoCodigo;
 	}
-	
-	//crear cuenta
+
+	// crear cuenta
 	public Cuenta crearCuenta(Cliente cliente) {
 		String codigoStr = ultimoCodigo + "";
 		ultimoCodigo++;
 		Cuenta cuenta = new Cuenta(codigoStr);
 
-        cuenta.setPropietario(cliente);
+		cuenta.setPropietario(cliente);
 
-        return cuenta;
+		return cuenta;
 	}
-	
-	//metodo depositar
+
+	// metodo depositar
 	public boolean depositar(double monto, Cuenta cuenta) {
-		if (monto>0) {
-			cuenta.setSaldoActual(cuenta.getSaldoActual()+monto);
+		if (monto > 0) {
+			cuenta.setSaldoActual(cuenta.getSaldoActual() + monto);
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-	}
-	
-	//metoro retirar
-	public boolean retirar(double monto, Cuenta cuenta) {
-		if(monto > 0 && monto<=cuenta.getSaldoActual()) {
-			cuenta.setSaldoActual(cuenta.getSaldoActual()-monto);
-			return true;
-		}else {
-			return false;
-		}
-		
 	}
 
-	
-	
-	
+	// metoro retirar
+	public boolean retirar(double monto, Cuenta cuenta) {
+		if (monto > 0 && monto <= cuenta.getSaldoActual()) {
+			cuenta.setSaldoActual(cuenta.getSaldoActual() - monto);
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	// metodo transferir
+	public boolean transferir(Cuenta origen, Cuenta destino) {
+		double monto = origen.getSaldoActual();
+		boolean retiroExitoso = retirar(monto, origen);
+
+		if (retiroExitoso) {
+			depositar(monto, destino);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
