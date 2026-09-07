@@ -89,6 +89,7 @@ public class TestBanco {
 		assertEquals(false, resultado);
 		assertEquals(0, cuenta.getSaldoActual());
 	}
+	
 	//deposito con valor negativo
 	@Test
 	public void probarDepositoMontoNegativo() {
@@ -101,4 +102,47 @@ public class TestBanco {
 	    assertEquals(false, resultado);
 	    assertEquals(0, cuenta.getSaldoActual());
 	}
+	
+	//probar retiro valido
+	@Test
+	public void probarRetiroValido() {
+
+	    Banco banco = new Banco();
+	    Cuenta cuenta = new Cuenta("1000");
+
+	    cuenta.setSaldoActual(100);
+
+	    boolean resultado = banco.retirar(40, cuenta);
+
+	    assertEquals(true, resultado);
+	    assertEquals(60, cuenta.getSaldoActual());
+	}
+	
+	//probar retiro monto 0
+	@Test
+	public void probarReritoCero() {
+		Banco banco=new Banco();
+		Cuenta cuenta = new Cuenta("25");
+		cuenta.setSaldoActual(500);
+		boolean resultado = banco.retirar(0, cuenta);
+		assertEquals(false, resultado);
+	    assertEquals(500, cuenta.getSaldoActual());
+	}
+	
+	//retiro es mayor al saldo de la cuenta
+	@Test
+	public void probarRetiroMayorAlSaldo() {
+
+	    Banco banco = new Banco();
+	    Cuenta cuenta = new Cuenta("1000");
+
+	    cuenta.setSaldoActual(50);
+
+	    boolean resultado = banco.retirar(150, cuenta);
+
+	    assertEquals(false, resultado);
+	    assertEquals(50, cuenta.getSaldoActual());
+	}
+	
+	
 }
