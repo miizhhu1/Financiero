@@ -57,4 +57,48 @@ public class TestBanco {
 
 		assertEquals("A", cuenta.getTipo());
 	}
+
+	// probar deposito valido
+	@Test
+	public void probarDepositoValido() {
+
+		// Preparar
+		Banco banco = new Banco();
+		Cuenta cuenta = new Cuenta("1000");
+
+		// Ejecutar
+		boolean resultado = banco.depositar(100, cuenta);
+
+		// Verificar
+		assertEquals(true, resultado);
+		assertEquals(100, cuenta.getSaldoActual());
+	}
+
+	// probar depostio con valor de 0
+	@Test
+	public void probarDepositoMontoInvalido() {
+
+		// Preparar
+		Banco banco = new Banco();
+		Cuenta cuenta = new Cuenta("1000");
+
+		// Ejecutar
+		boolean resultado = banco.depositar(0, cuenta);
+
+		// Verificar
+		assertEquals(false, resultado);
+		assertEquals(0, cuenta.getSaldoActual());
+	}
+	//deposito con valor negativo
+	@Test
+	public void probarDepositoMontoNegativo() {
+
+	    Banco banco = new Banco();
+	    Cuenta cuenta = new Cuenta("1000");
+
+	    boolean resultado = banco.depositar(-50, cuenta);
+
+	    assertEquals(false, resultado);
+	    assertEquals(0, cuenta.getSaldoActual());
+	}
 }
