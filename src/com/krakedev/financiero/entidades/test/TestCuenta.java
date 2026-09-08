@@ -11,7 +11,7 @@ public class TestCuenta {
 
 		Banco banco = new Banco();
 
-		Cliente cliente = new Cliente("1753506128", "Mishell", "Yanez");
+		Cliente cliente = new Cliente();
 		
 		Cuenta cuenta1 = new Cuenta("10");
 		

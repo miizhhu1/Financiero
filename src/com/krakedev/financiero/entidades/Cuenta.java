@@ -59,6 +59,7 @@ public class Cuenta {
 		System.out.println("Cédula cliente: " + propietario.getCedula());
 		System.out.println("Nombre del cliente: " + propietario.getNombre());
 		System.out.println("Apellido del cliente: " + propietario.getApellido());
+		System.out.println("Direccion del cliente: " + propietario.getDireccion());
 	}
 
 }

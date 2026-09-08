@@ -18,7 +18,7 @@ public class TestBanco {
 		// Preparar
 		Banco banco = new Banco();
 
-		Cliente cliente = new Cliente("1234567890", "Ana", "Perez");
+		Cliente cliente = new Cliente();
 
 		// Ejecutar
 		Cuenta cuenta1 = banco.crearCuenta(cliente);
@@ -36,7 +36,7 @@ public class TestBanco {
 		// Preparar
 		Banco banco = new Banco();
 
-		Cliente cliente = new Cliente("1234567890", "Ana", "Perez");
+		Cliente cliente = new Cliente();
 
 		// Ejecutar
 		Cuenta cuenta = banco.crearCuenta(cliente);
@@ -51,7 +51,7 @@ public class TestBanco {
 
 		Banco banco = new Banco();
 
-		Cliente cliente = new Cliente("1234567890", "Ana", "Perez");
+		Cliente cliente = new Cliente();
 
 		Cuenta cuenta = banco.crearCuenta(cliente);
 

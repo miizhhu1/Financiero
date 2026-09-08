@@ -64,5 +64,17 @@ public class Banco {
 			return false;
 		}
 	}
+	//metodo cobrarMantenimiento,
+	//probar Test enn otra clase main
+	//antes de cobrar y despues de cobrar
+	
+	public boolean cobrarMantenimiento (double monto, Cuenta cuenta) {
+		if (monto > 0 && monto <= cuenta.getSaldoActual()) {
+			cuenta.setSaldoActual(cuenta.getSaldoActual() - monto);
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }
